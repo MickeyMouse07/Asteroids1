@@ -27,10 +27,11 @@ class Player(CircleShape):
         self.rotation += PLAYER_TURN_SPEED * dt
 
     def update(self, dt):
-        keys = pygame.key.get_pressed()
-        self.BulletTimer = max(self.BulletTimer  - dt, 0)
-       
         self.BulletTimer -= dt
+        keys = pygame.key.get_pressed()
+        #self.BulletTimer = max(self.BulletTimer  - dt, 0) 
+       
+        
 
         if keys[pygame.K_a]:
             self.rotate(-dt)
@@ -44,26 +45,7 @@ class Player(CircleShape):
             if self.BulletTimer <= 0:
                 self.shoot()
                 self.BulletTimer = PLAYER_SHOOT_COOLDOWN
-
-           
-
-            
-            
-            
- 
-             
-              
-            
-            
-
-
-                
-            
-                
-
-            
-
-
+  
     def move(self, dt):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
         self.position += forward * PLAYER_SPEED * dt
